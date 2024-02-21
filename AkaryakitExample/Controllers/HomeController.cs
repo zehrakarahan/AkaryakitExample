@@ -1,4 +1,5 @@
 ﻿using AkaryakitExample.Helpers;
+using AkaryakitExample.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -36,9 +37,15 @@ namespace AkaryakitExample.Controllers
                     ZipFile.ExtractToDirectory(zipPath + @"\" + zipFile.Split(".")[0] + ".zip", extractPath+@"\" + zipFile.Split(".")[0]);
                 }
                 ParseHelpers parseHelpers = new ParseHelpers();
+               
                 var sonuc = parseHelpers.DeserializeXml<SaleData>(extractPath + @"\" + zipFile.Split(".")[0] + @"\" + zipFile.Split(".")[0] + ".xml");
             }
-            
+          
+            return Ok();
+        }
+        [HttpGet("ResimOku")]
+        public IActionResult ResimOku()
+        {
             return Ok();
         }
     }
